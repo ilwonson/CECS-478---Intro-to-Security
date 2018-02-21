@@ -1,22 +1,24 @@
-#from itertools import zip_longest
-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: IL WON SON
+Assignment 2 - This program decrypts cipher 1 and 2.
+Reference: http://practicalcryptography.com
+           Hacking Secret Ciphers with Python by AI Sweigart
+"""
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 LETTERS_AND_SPACE = LETTERS + LETTERS.lower() + ' \t\n'
 
-def hack():
+def hackOneTwo():
     
     '''
     #1. fqjcb rwjwj vnjax bnkhj whxcq nawjv nfxdu mbvnu ujbbf nnc
     #2. oczmz vmzor jocdi bnojv dhvod igdaz admno ojbzo rcvot jprvi oviyv aozmo cvooj ziejt dojig toczr dnzno jahvi fdiyv xcdzq zoczn zxjiy
-    #3. ejitp spawa qleji taiul rtwll rflrl laoat wsqqj atgac kthls iraoa twlpl qjatw jufrh lhuts qataq itats aittk stqfj cae
-    #4. iyhqz ewqin azqej shayz niqbe aheum hnmnj jaqii yuexq ayqkn jbeuq iihed yzhni ifnun sayiz yudhe
-    sqshu qesqa iluym qkque aqaqm oejjs hqzyu jdzqa diesh niznj jayzy uiqhq vayzq shsnj jejjz nshna
-    hnmyt isnae sqfun dqzew qiead zevqi zhnjq shqze udqai jrmtq uishq ifnun siiqa suoij qqfni syyle iszhn
-    bhmei squih nimnx hsead shqmr udquq uaqeu iisqe jshnj oihyy snaxs hqihe lsilu ymhni tyz
     '''
     
-    ciphertext = 'fqjcb rwjwj vnjax bnkhj whxcq nawjv nfxdu mbvnu ujbbf nnc'
-    #ciphertext = 'oczmz vmzor jocdi bnojv dhvod igdaz admno ojbzo rcvot jprvi oviyv aozmo cvooj ziejt dojig toczr dnzno jahvi fdiyv xcdzq zoczn zxjiy'
+    # change the comment to decrypt other ciphertext
+    #ciphertext = 'fqjcb rwjwj vnjax bnkhj whxcq nawjv nfxdu mbvnu ujbbf nnc'
+    ciphertext = 'oczmz vmzor jocdi bnojv dhvod igdaz admno ojbzo rcvot jprvi oviyv aozmo cvooj ziejt dojig toczr dnzno jahvi fdiyv xcdzq zoczn zxjiy'
     
     #print(ciphertext.split())
     #print(ciphertext)
@@ -47,7 +49,7 @@ def hack():
         listOfDeciphertext.append(plaintext)
     #print(listOfDeciphertext)
     
-    #----------------------------------------
+    #---------Check for complete--------------#
     result = 0
     for k in range(len(listOfDeciphertext)):
         text = ''.join(listOfDeciphertext[k].split())
@@ -57,12 +59,12 @@ def hack():
             i, j = 0, n 
             for x in range(len(text)):
                 temp = text[i:j]
-                if temp in ENGLISH_WORDS:
+                if temp in ENGLISH_WORDS: # if Words are in Dictionary add to candidates
                     candidates.append(temp)
                 i += 1
                 j += 1
         #print(candidates, len(candidates))
-        if len(candidates) > 15:
+        if len(candidates) > 15: # if candidates are sufficent, then program completes
             result = k
     if result > 0:
         print('\nCiphertext: ' + ciphertext)
@@ -73,19 +75,17 @@ def hack():
     
     
     '''
+    Plaintext spaceing inprogress.
+    
     for word in listtemp:
         if word in ENGLISH_WORDS:
             candidates.append(word)
-    '''
     
-    
-    '''#spaces
+    #spaces
     for x in range(len(frontspace)):
         print(frontspace[x],backspace[x])
         text = text[:space[x]] + ' ' + text[space[x]:]
     print(text)
-    '''
-    '''
     args = [iter(text)] * 5
     listOfText = [''.join(k) for k in zip_longest(*args,fillvalue='_')]
     print(listOfText)
